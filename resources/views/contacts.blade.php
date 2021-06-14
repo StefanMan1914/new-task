@@ -11,6 +11,11 @@
         <td>{{$contacts['first_name']}}</td>
         <td>{{$contacts['last_name']}}</td>
         <td>{{$contacts['email']}}</td>
+        <td><a href = delete/{{$contacts['id']}}>Delete</a></td>
     </tr>
     @endforeach
 </table>
+<br>
+
+<button onclick="location.href='{{ url('addcontact') }}'">
+     Add Contact</button>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\AddContact;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,11 @@ use App\Http\Controllers\ContactsController;
 */
 
 Route::get('/', function () {
-    return view('contacts');
+    return redirect('contacts');  //sets default route by redirecting
 });
 
-Route:: get('contacts', [ContactsController::class, 'showContacts']);
+Route::get('contacts', [ContactsController::class, 'showContacts']); //displays all contacts
+
+Route::view('addcontact', 'addcontact');
+Route::post('submit', 'App\Http\Controllers\AddContact@addContact')->name('addContact'); //calling function to add a contact
+Route::get('delete/{id}', 'App\Http\Controllers\DeleteContact@deleteContact')->name('deleteContact');   // calling function to delete contact
